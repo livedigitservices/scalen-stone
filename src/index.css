@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-display: 'Plus Jakarta Sans', system-ui, sans-serif;
+    --font-serif: 'Cinzel', serif;
+  }
+
+  body {
+    background-color: #ffffff;
+    color: #0f172a;
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    color: #0f172a;
+  }
+
+  .font-brand {
+    font-family: var(--font-serif);
+    letter-spacing: 0.12em;
+  }
+}
+
+/* Custom utility classes */
+.gold-gradient-text {
+  background: linear-gradient(135deg, #a67c42 0%, #c5a880 50%, #8c642a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.glass-nav {
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.9);
+}
+
+.glass-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+}
+
+.glass-card-hover {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card-hover:hover {
+  border-color: rgba(197, 168, 128, 0.5);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -15px rgba(197, 168, 128, 0.15), 0 10px 20px -5px rgba(0, 0, 0, 0.05);
+}
+
+/* Smooth custom scrollbar for white theme */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f8fafc;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a67c42;
+}
