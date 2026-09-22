@@ -11,6 +11,7 @@ export const NAV_ITEMS: NavItem[] = [
   { label: "Solutions", href: "/solutions" },
   { label: "Why Scalen Stone", href: "/why-choose-us" },
   { label: "Insights", href: "/insights" },
+  { label: "Gold Purchase", href: "/gold-purchase", badge: "PDF" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -23,6 +24,7 @@ export const FOOTER_NAV = {
     { label: "Careers & Advisory Fellows", href: "/contact" },
   ],
   services: [
+    { label: "Gold Purchase & PDF Portal", href: "/gold-purchase" },
     { label: "Wealth Management", href: "/services#wealth-management" },
     { label: "Investment Planning", href: "/services#investment-planning" },
     { label: "Financial Planning", href: "/services#financial-planning" },
@@ -31,6 +33,7 @@ export const FOOTER_NAV = {
     { label: "Portfolio Advisory", href: "/services#portfolio-advisory" },
   ],
   solutions: [
+    { label: "Client Gold Purchase Invoice", href: "/gold-purchase" },
     { label: "Private Individuals", href: "/solutions#individuals" },
     { label: "High-Net-Worth Families", href: "/solutions#hnwi" },
     { label: "Founders & Business Owners", href: "/solutions#founders" },

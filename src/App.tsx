@@ -15,6 +15,7 @@ import { InsightDetailPage } from './pages/InsightDetailPage';
 import { ContactPage } from './pages/ContactPage';
 import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
 import { TermsConditionsPage } from './pages/TermsConditionsPage';
+import { GoldPurchasePage } from './pages/GoldPurchasePage';
 import { NotFoundPage } from './pages/NotFoundPage';
 
 const ScrollHelper: React.FC = () => {
@@ -37,6 +38,7 @@ export const App: React.FC = () => {
             <Route path="/why-choose-us" element={<WhyChooseUsPage />} />
             <Route path="/insights" element={<InsightsPage />} />
             <Route path="/insights/:slug" element={<InsightDetailPage />} />
+            <Route path="/gold-purchase" element={<GoldPurchasePage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
             <Route path="/terms-conditions" element={<TermsConditionsPage />} />
