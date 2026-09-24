@@ -5,8 +5,20 @@ import { BRAND } from '../constants/theme';
 export const PrivacyPolicyPage: React.FC = () => {
   return (
     <div className="pt-28 pb-24 bg-white text-[#0f172a]">
-      <section className="py-16 border-b border-[#e2e8f0] bg-[#f8fafc]">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+      <section className="relative py-16 sm:py-24 border-b border-[#e2e8f0] overflow-hidden bg-[#f8fafc]">
+        {/* Matching Hero Background Image with Luxury Overlay */}
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
+          <img
+            src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=1600&auto=format&fit=crop"
+            alt="Fiduciary legal governance and regulatory compliance"
+            className="w-full h-full object-cover object-center opacity-15 sm:opacity-20 mix-blend-multiply filter contrast-110"
+            loading="eager"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/85 to-[#f8fafc]" />
+          <div className="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:24px_24px] opacity-35" />
+        </div>
+
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4 relative z-10">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#a67c42]/30 bg-[#fbf7f0] text-xs font-semibold uppercase tracking-wider text-[#a67c42]">
             <ShieldCheck size={14} />
             Data Governance & Confidentiality

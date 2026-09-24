@@ -52,11 +52,14 @@ export const HeroSection: React.FC = () => {
       ref={containerRef}
       className="relative min-h-[92vh] lg:min-h-screen flex items-center justify-center pt-36 pb-20 overflow-hidden bg-white"
     >
-      {/* Soft architectural luxury background */}
+      {/* Architectural luxury financial skyscraper backdrop */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
-        <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-gradient-to-b from-[#fbf7f0] to-transparent rounded-full blur-3xl opacity-70" />
-        <div className="absolute bottom-0 left-10 w-[500px] h-[500px] bg-slate-50 rounded-full blur-3xl" />
-        {/* Subtle grid pattern */}
+        <img
+          src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2000&auto=format&fit=crop"
+          alt="Financial district architectural skyscraper"
+          className="w-full h-full object-cover object-top opacity-12 sm:opacity-18 mix-blend-multiply filter contrast-125 saturate-50"
+          loading="eager"
+        />
         <div className="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:24px_24px] opacity-40" />
       </div>
 

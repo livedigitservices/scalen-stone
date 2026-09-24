@@ -26,8 +26,18 @@ const iconMap: Record<string, React.ReactNode> = {
 export const ServicesPage: React.FC = () => {
   return (
     <div className="pt-28 pb-24 bg-white text-[#0f172a]">
-      <section className="py-16 sm:py-24 border-b border-[#e2e8f0] bg-[#f8fafc]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-20 sm:py-28 border-b border-[#e2e8f0] overflow-hidden bg-[#f8fafc]">
+        {/* Matching Hero Background Image with Luxury Overlay */}
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
+          <img
+            src="https://images.unsplash.com/photo-1610375461246-83df859d849d?q=80&w=1600&auto=format&fit=crop"
+            alt="Gold bullion bars and financial reserves"
+            className="w-full h-full object-cover object-center opacity-15 sm:opacity-20 mix-blend-multiply filter contrast-115"
+            loading="eager"
+          />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <SectionHeader
             eyebrow="Specialized Gold & Financial Solutions"
             title="Comprehensive Gold Financial Services"

@@ -6,8 +6,18 @@ import { WHY_SCALEN_STONE } from '../data/principles';
 export const WhyChooseUsPage: React.FC = () => {
   return (
     <div className="pt-28 pb-24 bg-white text-[#0f172a]">
-      <section className="py-16 sm:py-24 border-b border-[#e2e8f0] bg-[#f8fafc]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-20 sm:py-28 border-b border-[#e2e8f0] overflow-hidden bg-[#f8fafc]">
+        {/* Matching Hero Background Image with Luxury Overlay */}
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
+          <img
+            src="https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=1600&auto=format&fit=crop"
+            alt="Bank grade security and institutional vault architecture"
+            className="w-full h-full object-cover object-center opacity-15 sm:opacity-20 mix-blend-multiply filter contrast-110"
+            loading="eager"
+          />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <SectionHeader
             eyebrow="The Scalen Stone Advantage"
             title="Why Discerning Clients"

@@ -13,45 +13,61 @@ export const InsightDetailPage: React.FC = () => {
   }
 
   return (
-    <article className="pt-32 pb-24 bg-white text-[#0f172a] min-h-screen">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <Link
-          to="/insights"
-          className="inline-flex items-center gap-2 text-xs font-bold text-[#64748b] hover:text-[#a67c42] transition-colors mb-8"
-        >
-          <ArrowLeft size={16} />
-          <span>Back to Insights</span>
-        </Link>
+    <article className="pt-28 pb-24 bg-white text-[#0f172a] min-h-screen">
+      {/* Top Hero Header Section with matching background image */}
+      <section className="relative pt-10 pb-14 border-b border-[#e2e8f0] overflow-hidden bg-[#f8fafc] mb-10">
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
+          <img
+            src="https://images.unsplash.com/photo-1450133064473-71024230f91b?q=80&w=1600&auto=format&fit=crop"
+            alt="Financial editorial research and market intelligence"
+            className="w-full h-full object-cover object-center opacity-15 sm:opacity-20 mix-blend-multiply filter contrast-110"
+            loading="eager"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/85 to-[#f8fafc]" />
+          <div className="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:24px_24px] opacity-35" />
+        </div>
 
-        <div className="space-y-6 pb-8 border-b border-[#e2e8f0]">
-          <span className="inline-block px-3.5 py-1 rounded-full bg-[#fbf7f0] border border-[#a67c42]/30 text-xs font-bold uppercase tracking-wider text-[#a67c42]">
-            {insight.category}
-          </span>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <Link
+            to="/insights"
+            className="inline-flex items-center gap-2 text-xs font-bold text-[#64748b] hover:text-[#a67c42] transition-colors mb-6"
+          >
+            <ArrowLeft size={16} />
+            <span>Back to Insights</span>
+          </Link>
 
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#0f172a] tracking-tight leading-tight font-display">
-            {insight.title}
-          </h1>
+          <div className="space-y-4">
+            <span className="inline-block px-3.5 py-1 rounded-full bg-[#fbf7f0] border border-[#a67c42]/30 text-xs font-bold uppercase tracking-wider text-[#a67c42]">
+              {insight.category}
+            </span>
 
-          <div className="flex flex-wrap items-center justify-between gap-4 text-xs text-[#64748b] pt-2">
-            <div className="flex items-center gap-4">
-              <div className="flex items-center gap-1.5">
-                <Clock size={14} className="text-[#a67c42]" />
-                <span>{insight.readTime}</span>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#0f172a] tracking-tight leading-tight font-display">
+              {insight.title}
+            </h1>
+
+            <div className="flex flex-wrap items-center justify-between gap-4 text-xs text-[#64748b] pt-2">
+              <div className="flex items-center gap-4">
+                <div className="flex items-center gap-1.5">
+                  <Clock size={14} className="text-[#a67c42]" />
+                  <span>{insight.readTime}</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <Calendar size={14} className="text-[#a67c42]" />
+                  <span>{insight.publishedDate}</span>
+                </div>
               </div>
-              <div className="flex items-center gap-1.5">
-                <Calendar size={14} className="text-[#a67c42]" />
-                <span>{insight.publishedDate}</span>
-              </div>
-            </div>
 
-            <div className="flex items-center gap-2 font-medium">
-              <span className="text-[#0f172a] font-bold">{insight.author}</span>
-              <span>•</span>
-              <span className="text-[#64748b]">{insight.authorRole}</span>
+              <div className="flex items-center gap-2 font-medium">
+                <span className="text-[#0f172a] font-bold">{insight.author}</span>
+                <span>•</span>
+                <span className="text-[#64748b]">{insight.authorRole}</span>
+              </div>
             </div>
           </div>
         </div>
+      </section>
+
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <div className="my-10 rounded-2xl overflow-hidden border border-[#e2e8f0] shadow-xl">
           <img

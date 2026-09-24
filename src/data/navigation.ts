@@ -12,7 +12,6 @@ export const NAV_ITEMS: NavItem[] = [
   { label: "Why Scalen Stone", href: "/why-choose-us" },
   { label: "Insights", href: "/insights" },
   { label: "Gold Purchase", href: "/gold-purchase", badge: "PDF" },
-  { label: "Contact", href: "/contact" },
 ];
 
 export const FOOTER_NAV = {
