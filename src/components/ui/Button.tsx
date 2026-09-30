@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'dark';
+  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'dark' | 'gold';
   size?: 'sm' | 'md' | 'lg';
   href?: string;
   showArrow?: boolean;
@@ -21,26 +21,28 @@ export const Button: React.FC<ButtonProps> = ({
   ...props
 }) => {
   const sizeClasses = {
-    sm: 'px-4 py-2 text-xs font-medium',
+    sm: 'px-4 py-2 text-xs font-semibold',
     md: 'px-6 py-3 text-sm font-semibold tracking-wide',
     lg: 'px-8 py-4 text-base font-semibold tracking-wide',
   }[size];
 
   const variantClasses = {
     primary:
-      'bg-gradient-to-r from-[#a67c42] via-[#b38e5d] to-[#8c642a] text-white hover:from-[#b38e5d] hover:to-[#a67c42] shadow-[0_4px_20px_rgba(166,124,66,0.25)] hover:shadow-[0_6px_25px_rgba(166,124,66,0.4)] border border-[#a67c42]/30',
+      'bg-[#0e1353] text-white hover:bg-[#b45309] shadow-md hover:shadow-xl transition-all duration-200 border border-transparent',
+    gold:
+      'bg-gradient-to-r from-[#d97706] via-[#f59e0b] to-[#b45309] text-white hover:from-[#b45309] hover:to-[#d97706] shadow-md hover:shadow-xl transition-all duration-200 border border-amber-300/30',
     secondary:
-      'bg-white text-[#0f172a] hover:bg-[#f8fafc] border border-[#e2e8f0] hover:border-[#a67c42]/60 shadow-sm',
+      'bg-white text-[#0e1353] hover:bg-blue-50/60 border border-slate-200 hover:border-[#0e1353]/60 shadow-sm',
     outline:
-      'bg-transparent text-[#0f172a] hover:text-[#a67c42] border border-[#cbd5e1] hover:border-[#a67c42] hover:bg-[#fbf7f0]/50',
+      'bg-transparent text-[#0e1353] hover:text-white border-2 border-[#0e1353] hover:bg-[#0e1353]',
     ghost:
-      'bg-transparent text-[#475569] hover:text-[#0f172a] hover:bg-slate-100 border border-transparent',
+      'bg-transparent text-[#475569] hover:text-[#0e1353] hover:bg-slate-100 border border-transparent',
     dark:
-      'bg-[#0f172a] text-white hover:bg-[#1e293b] border border-[#0f172a]',
+      'bg-[#0a0f3d] text-white hover:bg-[#0e1353] border border-[#0a0f3d]',
   }[variant];
 
   const baseClasses =
-    'relative inline-flex items-center justify-center gap-2 rounded-lg transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#a67c42] cursor-pointer group';
+    'relative inline-flex items-center justify-center gap-2 rounded-lg transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0e1353] cursor-pointer group';
 
   const combinedClasses = `${baseClasses} ${sizeClasses} ${variantClasses} ${className}`;
 

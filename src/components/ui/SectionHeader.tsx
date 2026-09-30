@@ -22,13 +22,13 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
   return (
     <div className={`max-w-3xl ${isCenter ? 'mx-auto text-center' : 'text-left'} ${className}`}>
       {eyebrow && (
-        <div className={`inline-flex items-center gap-2 px-3 py-1 mb-4 rounded-full border border-[#a67c42]/30 bg-[#fbf7f0] text-xs font-semibold tracking-wider uppercase text-[#a67c42] ${isCenter ? 'mx-auto' : ''}`}>
-          <span className="w-1.5 h-1.5 rounded-full bg-[#a67c42] animate-pulse" />
+        <div className={`inline-flex items-center gap-2 px-3 py-1 mb-4 rounded-full border border-amber-200/80 bg-amber-50 text-xs font-semibold tracking-wider uppercase text-amber-800 shadow-xs ${isCenter ? 'mx-auto' : ''}`}>
+          <span className="w-1.5 h-1.5 rounded-full bg-amber-600 animate-pulse" />
           {eyebrow}
         </div>
       )}
 
-      <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#0f172a] leading-[1.15]">
+      <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#0e1353] leading-[1.15]">
         {title} {highlight && <span className="gold-gradient-text block sm:inline">{highlight}</span>}
       </h2>
 

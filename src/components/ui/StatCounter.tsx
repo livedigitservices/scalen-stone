@@ -65,15 +65,15 @@ export const StatCounter: React.FC<StatCounterProps> = ({
   }, [isVisible, value, duration]);
 
   return (
-    <div ref={elRef} className="flex flex-col p-6 rounded-xl border border-[#e2e8f0] bg-white transition-all duration-300 hover:border-[#a67c42]/50 hover:shadow-md">
+    <div ref={elRef} className="flex flex-col p-6 rounded-xl border border-blue-100/70 bg-white transition-all duration-300 hover:border-[#0e1353] hover:shadow-xl hover:-translate-y-1">
       <div className="flex items-baseline gap-1">
-        {prefix && <span className="text-2xl sm:text-3xl font-semibold text-[#a67c42]">{prefix}</span>}
-        <span className="text-4xl sm:text-5xl font-extrabold tracking-tight text-[#0f172a] font-display">
+        {prefix && <span className="text-2xl sm:text-3xl font-bold text-[#ca8a04]">{prefix}</span>}
+        <span className="text-4xl sm:text-5xl font-extrabold tracking-tight text-[#0e1353] font-display">
           {count.toLocaleString()}
         </span>
-        {suffix && <span className="text-2xl sm:text-3xl font-semibold text-[#a67c42]">{suffix}</span>}
+        {suffix && <span className="text-2xl sm:text-3xl font-bold text-[#ca8a04]">{suffix}</span>}
       </div>
-      <h3 className="mt-3 text-base sm:text-lg font-semibold text-[#0f172a] tracking-tight">{label}</h3>
+      <h3 className="mt-3 text-base sm:text-lg font-bold text-[#0e1353] tracking-tight">{label}</h3>
       {sublabel && <p className="mt-1 text-xs sm:text-sm text-[#475569] leading-relaxed">{sublabel}</p>}
     </div>
   );

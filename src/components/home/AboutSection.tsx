@@ -1,87 +1,102 @@
 import React from 'react';
-import { Check, Scale } from 'lucide-react';
+import { ShieldCheck, Percent, Zap, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { Button } from '../ui/Button';
 
 export const AboutSection: React.FC = () => {
-  const focuses = [
-    "Strategic gold asset monetization",
-    "Instant low-interest gold loans",
-    "Release of pledged gold & bank buy-back",
-    "Certified laser purity testing",
-    "Business & working capital finance",
-    "Swiss-standard insured vault storage",
-  ];
-
   return (
-    <section className="py-24 sm:py-32 relative overflow-hidden bg-white">
+    <section className="py-16 sm:py-24 bg-white border-b border-blue-100/60">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           
-          {/* Left Column */}
-          <div className="lg:col-span-6 space-y-8">
-            <div className="space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#a67c42]/30 bg-[#fbf7f0] text-xs font-semibold tracking-wider uppercase text-[#a67c42]">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#a67c42]" />
-                About Scalen Stone Finance
-              </div>
-
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#0f172a] leading-[1.15] font-display">
-                More Than Finance.{' '}
-                <span className="gold-gradient-text block">A Long-Term Partnership.</span>
-              </h2>
+          {/* Left Column: Heading, description, and 3 key features */}
+          <div className="space-y-6">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-amber-200 bg-amber-50 text-xs font-semibold tracking-wider uppercase text-amber-900 shadow-xs">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#ca8a04]" />
+              <span>Transparent & Instant Gold Financing</span>
             </div>
 
-            <div className="relative rounded-2xl overflow-hidden border border-[#e2e8f0] shadow-xl group">
-              <img
-                src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?q=80&w=1200&auto=format&fit=crop"
-                alt="Scalen Stone executive conference room and boardroom"
-                className="w-full h-80 sm:h-96 object-cover transition-transform duration-700 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-              
-              <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-white/90 backdrop-blur-md border border-[#e2e8f0] flex items-center justify-between shadow-lg">
-                <div>
-                  <p className="text-xs font-bold text-[#0f172a]">Uncompromising Fiduciary Focus</p>
-                  <p className="text-[11px] text-[#475569]">Every decision structured for client capital preservation.</p>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#0e1353] leading-tight font-display">
+              Secure Gold Loans at{' '}
+              <span className="gold-gradient-text">Best Rates</span>
+            </h2>
+
+            <p className="text-base sm:text-lg text-[#475569] leading-relaxed font-normal">
+              Transform your gold into opportunity with our competitive loan rates, zero hidden charges, and quick 15-minute transparent process.
+            </p>
+
+            {/* 3 Core Features matching cyangold.in */}
+            <div className="space-y-5 pt-2">
+              {/* Feature 1: Secure Storage */}
+              <div className="flex items-start gap-4 p-4 rounded-xl bg-blue-50/50 border border-blue-100 hover:border-[#0e1353]/30 transition-colors">
+                <div className="p-2.5 rounded-lg bg-[#0e1353] text-white flex-shrink-0 mt-0.5">
+                  <ShieldCheck size={20} className="text-yellow-400" />
                 </div>
-                <Scale size={24} className="text-[#a67c42] flex-shrink-0 ml-3" />
+                <div>
+                  <h3 className="text-base font-bold text-[#0e1353]">Secure Storage</h3>
+                  <p className="text-sm text-[#475569] mt-0.5">Your gold is stored in our highly secure, bank-grade vaults with 24/7 CCTV surveillance and 100% comprehensive insurance coverage.</p>
+                </div>
               </div>
+
+              {/* Feature 2: Competitive Rates */}
+              <div className="flex items-start gap-4 p-4 rounded-xl bg-amber-50/50 border border-amber-200/60 hover:border-[#ca8a04] transition-colors">
+                <div className="p-2.5 rounded-lg bg-[#ca8a04] text-white flex-shrink-0 mt-0.5">
+                  <Percent size={20} className="text-white" />
+                </div>
+                <div>
+                  <h3 className="text-base font-bold text-[#0e1353]">Competitive Rates</h3>
+                  <p className="text-sm text-[#475569] mt-0.5">Get loans up to ₹7,000 per gram with minimal monthly interest starting from just 0.79% and flexible tenure options.</p>
+                </div>
+              </div>
+
+              {/* Feature 3: Quick Processing */}
+              <div className="flex items-start gap-4 p-4 rounded-xl bg-blue-50/50 border border-blue-100 hover:border-[#0e1353]/30 transition-colors">
+                <div className="p-2.5 rounded-lg bg-[#0e1353] text-white flex-shrink-0 mt-0.5">
+                  <Zap size={20} className="text-yellow-400" />
+                </div>
+                <div>
+                  <h3 className="text-base font-bold text-[#0e1353]">Quick Processing</h3>
+                  <p className="text-sm text-[#475569] mt-0.5">Get your loan evaluated, verified, and sanctioned within 15–30 minutes with minimal documentation and instant bank credit.</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Action buttons */}
+            <div className="pt-2 flex flex-wrap items-center gap-4">
+              <Button href="/gold-purchase" variant="gold" size="md" showArrow>
+                Apply for Gold Loan
+              </Button>
+              <Button href="/about" variant="primary" size="md">
+                About Scalen Stone
+              </Button>
             </div>
           </div>
 
-          {/* Right Column */}
-          <div className="lg:col-span-6 space-y-6">
-            <p className="text-lg text-[#334155] leading-relaxed font-normal">
-              At <strong className="text-[#0f172a] font-bold">Scalen Stone Finance</strong>, we believe true wealth is not created through speculative guesswork or fleeting market sentiment. It is built systematically through structured, objective, and deeply personalized financial frameworks.
-            </p>
+          {/* Right Column: High Quality Gold Visual Asset matching cyangold */}
+          <div className="relative">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white ring-1 ring-blue-100">
+              <img
+                src="https://images.unsplash.com/photo-1610375461246-83df859d849d?auto=format&fit=crop&w=1000&q=80"
+                alt="Pure gold bullion and ornaments"
+                className="w-full h-[450px] sm:h-[520px] object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0e1353]/60 via-transparent to-transparent pointer-events-none" />
 
-            <p className="text-sm sm:text-base text-[#475569] leading-relaxed">
-              We serve as dedicated financial navigators for families, enterprise founders, and forward-thinking professionals. Our multidisciplinary approach bridges personal life aspirations with institutional-grade capital allocation, instant gold monetization, and rigorous balance sheet defense.
-            </p>
-
-            <div className="pt-2">
-              <h3 className="text-xs font-bold tracking-wider text-[#a67c42] uppercase mb-4">
-                Core Advisory Focus Areas:
-              </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {focuses.map((item, idx) => (
-                  <div key={idx} className="flex items-center gap-3 p-3 rounded-lg bg-[#f8fafc] border border-[#e2e8f0] hover:border-[#a67c42]/40 transition-colors">
-                    <div className="w-5 h-5 rounded-full bg-[#fbf7f0] border border-[#a67c42]/30 flex items-center justify-center flex-shrink-0">
-                      <Check size={12} className="text-[#a67c42]" />
-                    </div>
-                    <span className="text-xs sm:text-sm font-semibold text-[#334155]">{item}</span>
+              {/* Floating highlight badge */}
+              <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-white/95 backdrop-blur-md border border-blue-100 shadow-xl flex items-center justify-between">
+                <div>
+                  <div className="flex items-center gap-1.5 text-xs font-bold text-[#ca8a04]">
+                    <CheckCircle2 size={15} />
+                    <span>VERIFIED GERMAN LASER TESTING</span>
                   </div>
-                ))}
+                  <p className="text-xs text-[#0e1353] font-semibold mt-0.5">
+                    Highest Market Valuation per gram with zero deduction.
+                  </p>
+                </div>
+                <div className="text-right">
+                  <span className="text-[11px] font-bold text-slate-500 uppercase block">Max Loan</span>
+                  <span className="text-base font-bold font-mono text-[#0e1353]">₹7,000/g</span>
+                </div>
               </div>
-            </div>
-
-            <div className="pt-4 flex items-center gap-4">
-              <Button href="/about" variant="primary" size="md" showArrow>
-                Discover Scalen Stone
-              </Button>
-              <Button href="/contact" variant="outline" size="md">
-                Meet Advisory Team
-              </Button>
             </div>
           </div>
 

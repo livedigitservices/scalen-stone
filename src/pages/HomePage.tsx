@@ -1,29 +1,34 @@
 import React from 'react';
 import { HeroSection } from '../components/home/HeroSection';
-import { TrustStatsSection } from '../components/home/TrustStatsSection';
 import { AboutSection } from '../components/home/AboutSection';
 import { ServicesSection } from '../components/home/ServicesSection';
-import { FeaturedSolutionsSection } from '../components/home/FeaturedSolutionsSection';
-import { WhyScalenStoneSection } from '../components/home/WhyScalenStoneSection';
-import { ProcessSection } from '../components/home/ProcessSection';
-import { InvestmentSolutionsSection } from '../components/home/InvestmentSolutionsSection';
-import { InsightsSection } from '../components/home/InsightsSection';
+import { GoldCalculator } from '../components/ui/GoldCalculator';
 import { CTASection } from '../components/home/CTASection';
 import { ContactSection } from '../components/home/ContactSection';
 
 export const HomePage: React.FC = () => {
   return (
     <main className="relative">
+      {/* 1. Hero Section matching cyangold.in */}
       <HeroSection />
-      <TrustStatsSection />
+
+      {/* 2. Feature Split Section ("Secure Gold Loans at Best Rates") */}
       <AboutSection />
+
+      {/* 3. Live Interactive Gold Valuation & Loan Calculator */}
+      <section id="calculator" className="py-16 sm:py-20 bg-white relative scroll-mt-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <GoldCalculator />
+        </div>
+      </section>
+
+      {/* 4. Services Grid Section (6 Services matching cyangold.in) */}
       <ServicesSection />
-      <FeaturedSolutionsSection />
-      <WhyScalenStoneSection />
-      <ProcessSection />
-      <InvestmentSolutionsSection />
-      <InsightsSection />
+
+      {/* 5. Bottom Royal Navy CTA Banner */}
       <CTASection />
+
+      {/* 6. Contact & Enquiry Form Section */}
       <ContactSection />
     </main>
   );

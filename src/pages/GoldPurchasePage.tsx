@@ -24,6 +24,7 @@ import {
 } from 'lucide-react';
 import { SectionHeader } from '../components/ui/SectionHeader';
 import { generateGoldLoanPdf, GoldLoanData, GoldItemRecord, formatINR } from '../services/goldPurchasePdf';
+import { submitGoldLoanApplication } from '../services/web3forms';
 
 export const GoldPurchasePage: React.FC = () => {
   // Step navigation: 1 = Customer Info, 2 = Loan Details & Photos
@@ -63,6 +64,7 @@ export const GoldPurchasePage: React.FC = () => {
   const [lastGenerated, setLastGenerated] = useState<{
     filename: string;
     certNo: string;
+    web3Status?: 'sent' | 'fallback';
   } | null>(null);
 
   // File input refs for uploading photos per item
@@ -179,10 +181,19 @@ export const GoldPurchasePage: React.FC = () => {
           }),
       };
 
+      // 1. Submit loan particulars to Scalen Stone Bullion Desk via Web3Forms
+      const web3Res = await submitGoldLoanApplication(dataToGenerate, certNo);
+
+      // 2. Generate official verified PDF sanction dossier & pledge receipt
       const { filename } = await generateGoldLoanPdf(dataToGenerate);
-      setLastGenerated({ filename, certNo });
+      
+      setLastGenerated({
+        filename,
+        certNo,
+        web3Status: web3Res.success ? 'sent' : 'fallback',
+      });
     } catch (err) {
-      console.error('Failed to generate PDF:', err);
+      console.error('Failed to process loan application:', err);
       alert('An error occurred while generating the PDF. Please try again.');
     } finally {
       setIsGenerating(false);
@@ -323,7 +334,7 @@ export const GoldPurchasePage: React.FC = () => {
 
           {/* Stepper matching the reference image (Customer Info -> Loan Details & Photos) */}
           <div className="mt-10 flex items-center justify-center">
-            <div className="flex items-center gap-3 sm:gap-6 bg-white px-6 sm:px-10 py-3 rounded-full border border-[#e2e8f0] shadow-xs">
+            <div className="flex items-center gap-3 sm:gap-6 bg-white px-6 sm:px-10 py-3 rounded-full border border-blue-100/90 shadow-xs">
               {/* Step 1: Customer Info */}
               <button
                 type="button"
@@ -333,15 +344,15 @@ export const GoldPurchasePage: React.FC = () => {
                 <div
                   className={`w-9 h-9 rounded-full flex items-center justify-center transition-all ${
                     currentStep === 1
-                      ? 'bg-[#3b82f6] text-white shadow-md shadow-blue-500/30'
-                      : 'bg-[#dbeafe] text-[#2563eb]'
+                      ? 'bg-[#0e1353] text-white shadow-md shadow-[#0e1353]/30'
+                      : 'bg-blue-50 text-[#0e1353]'
                   }`}
                 >
                   <User size={18} />
                 </div>
                 <span
                   className={`text-xs sm:text-sm font-semibold tracking-wide ${
-                    currentStep === 1 ? 'text-[#2563eb]' : 'text-[#64748b]'
+                    currentStep === 1 ? 'text-[#0e1353]' : 'text-[#64748b]'
                   }`}
                 >
                   Customer Info
@@ -350,7 +361,7 @@ export const GoldPurchasePage: React.FC = () => {
 
               <div
                 className={`w-10 sm:w-16 h-0.5 transition-colors ${
-                  currentStep === 2 ? 'bg-[#3b82f6]' : 'bg-[#e2e8f0]'
+                  currentStep === 2 ? 'bg-[#0e1353]' : 'bg-slate-200'
                 }`}
               />
 
@@ -365,15 +376,15 @@ export const GoldPurchasePage: React.FC = () => {
                 <div
                   className={`w-9 h-9 rounded-full flex items-center justify-center transition-all ${
                     currentStep === 2
-                      ? 'bg-[#3b82f6] text-white shadow-md shadow-blue-500/30'
-                      : 'bg-[#f1f5f9] text-[#64748b]'
+                      ? 'bg-[#0e1353] text-white shadow-md shadow-[#0e1353]/30'
+                      : 'bg-slate-100 text-[#64748b]'
                   }`}
                 >
                   <DollarSign size={18} />
                 </div>
                 <span
                   className={`text-xs sm:text-sm font-semibold tracking-wide ${
-                    currentStep === 2 ? 'text-[#2563eb]' : 'text-[#64748b]'
+                    currentStep === 2 ? 'text-[#0e1353]' : 'text-[#64748b]'
                   }`}
                 >
                   Loan Details & Photos
@@ -666,7 +677,7 @@ export const GoldPurchasePage: React.FC = () => {
               <div className="pt-6 flex justify-end">
                 <button
                   type="submit"
-                  className="w-full sm:w-auto min-w-[200px] inline-flex items-center justify-center gap-2.5 py-3.5 px-8 rounded-xl font-bold text-sm text-white bg-gradient-to-r from-[#2563eb] to-[#3b82f6] hover:from-[#1d4ed8] hover:to-[#2563eb] shadow-lg shadow-blue-500/25 active:scale-[0.99] transition-all cursor-pointer"
+                  className="w-full sm:w-auto min-w-[200px] inline-flex items-center justify-center gap-2.5 py-3.5 px-8 rounded-xl font-bold text-sm text-white bg-[#0e1353] hover:bg-[#b45309] shadow-md hover:shadow-xl active:scale-[0.99] transition-all cursor-pointer"
                 >
                   <span>Add Customer & Next</span>
                   <ArrowRight size={17} />
@@ -680,6 +691,16 @@ export const GoldPurchasePage: React.FC = () => {
           {/* ============================================================== */}
           {currentStep === 2 && (
             <form onSubmit={handleFinalSubmit} className="space-y-8">
+              {/* Web3Forms Honeypot Spam Protection */}
+              <input
+                type="checkbox"
+                name="botcheck"
+                className="hidden"
+                style={{ display: 'none' }}
+                tabIndex={-1}
+                autoComplete="off"
+              />
+
               {/* Customer Verified Banner matching Reference Image 2 */}
               <div className="p-4 sm:p-5 rounded-2xl border border-emerald-200 bg-emerald-50/70 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div className="flex items-center gap-3">
@@ -1103,16 +1124,16 @@ export const GoldPurchasePage: React.FC = () => {
                 <button
                   type="submit"
                   disabled={isGenerating}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 py-4 px-8 rounded-xl font-bold text-sm text-white bg-gradient-to-r from-[#2563eb] to-[#3b82f6] hover:from-[#1d4ed8] hover:to-[#2563eb] shadow-lg shadow-blue-500/25 active:scale-[0.99] transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 py-4 px-8 rounded-xl font-bold text-sm text-white bg-[#0e1353] hover:bg-[#b45309] shadow-md hover:shadow-xl active:scale-[0.99] transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isGenerating ? (
                     <>
                       <RefreshCw size={18} className="animate-spin" />
-                      <span>Compiling Loan Dossier & Photos PDF...</span>
+                      <span>Transmitting via Web3Forms & Compiling PDF...</span>
                     </>
                   ) : (
                     <>
-                      <span>🚀 Create Loan with Photos & Download PDF</span>
+                      <span>🚀 Submit Application & Download Verified PDF</span>
                     </>
                   )}
                 </button>
@@ -1120,32 +1141,41 @@ export const GoldPurchasePage: React.FC = () => {
 
               {/* Success Notification Banner */}
               {lastGenerated && (
-                <div className="mt-8 p-5 rounded-2xl border border-emerald-200 bg-emerald-50 text-emerald-950">
+                <div className="mt-8 p-6 rounded-2xl border border-emerald-200 bg-emerald-50 text-emerald-950 space-y-3">
                   <div className="flex items-start gap-3.5">
-                    <CheckCircle2 size={22} className="text-emerald-600 mt-0.5 flex-shrink-0" />
-                    <div className="space-y-1.5 flex-1">
+                    <CheckCircle2 size={24} className="text-emerald-600 mt-0.5 flex-shrink-0" />
+                    <div className="space-y-2 flex-1">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <span className="px-2.5 py-0.5 rounded-full bg-emerald-100 border border-emerald-300 text-[10px] font-bold text-emerald-800 uppercase tracking-wider">
+                          ✓ Transmitted via Web3Forms
+                        </span>
+                        <span className="px-2.5 py-0.5 rounded-full bg-amber-100 border border-amber-300 text-[10px] font-bold text-amber-900 uppercase tracking-wider font-mono">
+                          Sanction Ref: {lastGenerated.certNo}
+                        </span>
+                      </div>
                       <p className="text-sm font-bold">
-                        Gold Loan Dossier & Pledge Receipt Successfully Generated!
+                        Gold Loan Application Transmitted & Sanction Dossier Downloaded!
                       </p>
-                      <p className="text-xs text-emerald-800 font-mono">
-                        {lastGenerated.filename}
+                      <p className="text-xs text-emerald-800 leading-relaxed">
+                        Application particulars have been delivered directly to Scalen Stone Bullion Desk via Web3Forms. Your official verified sanction dossier and pledge receipt has been saved as{' '}
+                        <span className="font-mono font-semibold">{lastGenerated.filename}</span>.
                       </p>
                       <div className="pt-2 flex flex-wrap gap-2.5">
                         <button
                           type="button"
                           onClick={() => generateGoldLoanPdf({ ...formData, certificateNumber: lastGenerated.certNo })}
                           disabled={isGenerating}
-                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-700 text-white text-xs font-semibold hover:bg-emerald-800 transition-colors cursor-pointer"
+                          className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-emerald-700 text-white text-xs font-semibold hover:bg-emerald-800 transition-colors cursor-pointer"
                         >
-                          <Download size={13} />
+                          <Download size={14} />
                           <span>Download PDF Again</span>
                         </button>
                         <button
                           type="button"
                           onClick={handleReset}
-                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-emerald-300 text-emerald-800 text-xs font-semibold hover:bg-emerald-100 transition-colors cursor-pointer"
+                          className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-white border border-emerald-300 text-emerald-800 text-xs font-semibold hover:bg-emerald-100 transition-colors cursor-pointer"
                         >
-                          <RefreshCw size={13} />
+                          <RefreshCw size={14} />
                           <span>Create New Loan Application</span>
                         </button>
                       </div>

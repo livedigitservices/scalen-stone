@@ -4,8 +4,8 @@ import { ContactSection } from '../components/home/ContactSection';
 
 export const ContactPage: React.FC = () => {
   return (
-    <div className="pt-28 bg-white text-[#0f172a]">
-      <section className="relative py-20 sm:py-28 border-b border-[#e2e8f0] overflow-hidden bg-[#f8fafc]">
+    <div className="pt-28 bg-white text-[#0e1353]">
+      <section className="relative py-20 sm:py-28 border-b border-blue-100/70 overflow-hidden bg-[#f8fafc]">
         {/* Matching Hero Background Image with Luxury Overlay */}
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
           <img

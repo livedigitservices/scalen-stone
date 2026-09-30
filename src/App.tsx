@@ -4,18 +4,15 @@ import { Navbar } from './components/layout/Navbar';
 import { Footer } from './components/layout/Footer';
 import { useScrollToTop } from './hooks/useScrollToTop';
 
-// Pages
+// Pages matching reference website (cyangold.in)
 import { HomePage } from './pages/HomePage';
 import { AboutPage } from './pages/AboutPage';
 import { ServicesPage } from './pages/ServicesPage';
-import { SolutionsPage } from './pages/SolutionsPage';
-import { WhyChooseUsPage } from './pages/WhyChooseUsPage';
-import { InsightsPage } from './pages/InsightsPage';
-import { InsightDetailPage } from './pages/InsightDetailPage';
+import { LocationPage } from './pages/LocationPage';
 import { ContactPage } from './pages/ContactPage';
+import { GoldPurchasePage } from './pages/GoldPurchasePage';
 import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
 import { TermsConditionsPage } from './pages/TermsConditionsPage';
-import { GoldPurchasePage } from './pages/GoldPurchasePage';
 import { NotFoundPage } from './pages/NotFoundPage';
 
 const ScrollHelper: React.FC = () => {
@@ -34,12 +31,9 @@ export const App: React.FC = () => {
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/services" element={<ServicesPage />} />
-            <Route path="/solutions" element={<SolutionsPage />} />
-            <Route path="/why-choose-us" element={<WhyChooseUsPage />} />
-            <Route path="/insights" element={<InsightsPage />} />
-            <Route path="/insights/:slug" element={<InsightDetailPage />} />
-            <Route path="/gold-purchase" element={<GoldPurchasePage />} />
+            <Route path="/location" element={<LocationPage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/gold-purchase" element={<GoldPurchasePage />} />
             <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
             <Route path="/terms-conditions" element={<TermsConditionsPage />} />
             <Route path="*" element={<NotFoundPage />} />

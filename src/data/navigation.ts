@@ -8,42 +8,34 @@ export const NAV_ITEMS: NavItem[] = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
-  { label: "Solutions", href: "/solutions" },
-  { label: "Why Scalen Stone", href: "/why-choose-us" },
-  { label: "Insights", href: "/insights" },
+  { label: "Location", href: "/location" },
+  { label: "Contact Us", href: "/contact" },
   { label: "Gold Purchase", href: "/gold-purchase", badge: "PDF" },
 ];
 
 export const FOOTER_NAV = {
   company: [
     { label: "About Us", href: "/about" },
-    { label: "Why Scalen Stone", href: "/why-choose-us" },
-    { label: "Leadership & Governance", href: "/about#governance" },
-    { label: "Client Testimonials", href: "/why-choose-us#testimonials" },
-    { label: "Careers & Advisory Fellows", href: "/contact" },
+    { label: "Our Locations", href: "/location" },
+    { label: "Contact Us", href: "/contact" },
+    { label: "Gold Purchase Desk", href: "/gold-purchase" },
   ],
   services: [
-    { label: "Gold Purchase & PDF Portal", href: "/gold-purchase" },
-    { label: "Wealth Management", href: "/services#wealth-management" },
-    { label: "Investment Planning", href: "/services#investment-planning" },
-    { label: "Financial Planning", href: "/services#financial-planning" },
-    { label: "Business Finance", href: "/services#business-finance" },
-    { label: "Risk Management", href: "/services#risk-management" },
-    { label: "Portfolio Advisory", href: "/services#portfolio-advisory" },
+    { label: "Gold Loan (₹7,000/g)", href: "/services#gold-loan" },
+    { label: "Gold Purchase", href: "/gold-purchase" },
+    { label: "Bank Buy Back", href: "/services#bank-buy-back" },
+    { label: "Nominal Interest Rates", href: "/services#interest-rates" },
+    { label: "Other Loans", href: "/services#other-loans" },
+    { label: "Online/Offline Payments", href: "/services#payments" },
   ],
-  solutions: [
-    { label: "Client Gold Purchase Invoice", href: "/gold-purchase" },
-    { label: "Private Individuals", href: "/solutions#individuals" },
-    { label: "High-Net-Worth Families", href: "/solutions#hnwi" },
-    { label: "Founders & Business Owners", href: "/solutions#founders" },
-    { label: "Corporate Treasury", href: "/solutions#corporate" },
-    { label: "Goal-Based Investing", href: "/solutions#goals" },
+  quickAccess: [
+    { label: "Gold Loan Calculator", href: "/#calculator" },
+    { label: "Gold Sanction PDF Dossier", href: "/gold-purchase" },
+    { label: "Branch Finder & Maps", href: "/location" },
+    { label: "Customer Helpline", href: "/contact" },
   ],
   legal: [
     { label: "Privacy Policy", href: "/privacy-policy" },
     { label: "Terms & Conditions", href: "/terms-conditions" },
-    { label: "Fiduciary Disclosures", href: "/terms-conditions#fiduciary" },
-    { label: "Regulatory Compliance", href: "/terms-conditions#regulatory" },
-    { label: "Security Architecture", href: "/privacy-policy#security" },
   ]
 };

@@ -14,8 +14,8 @@ export const NotFoundPage: React.FC = () => {
           <Button href="/" variant="primary" size="md">
             Return to Home
           </Button>
-          <Button href="/solutions" variant="outline" size="md">
-            View Solutions
+          <Button href="/services" variant="outline" size="md">
+            Our Services
           </Button>
         </div>
       </div>
